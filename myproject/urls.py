@@ -1,4 +1,5 @@
 from django.conf.urls import patterns, include, url
+
 from django.contrib import admin
 
 urlpatterns = patterns('',
@@ -9,8 +10,8 @@ urlpatterns = patterns('',
     url(r'^admin/', include(admin.site.urls)),
 
     url(r'^$', include('wofw.urls')),
-    url(r'^wards/^$', include('wofw.urls')),
-    url(r'^aldermen/^$', include('wofw.urls')),
-    url(r'^bills/^$', include('wofw.urls'))
+    url(r'^wards/', include('wofw.urls')),
+    url(r'^aldermen/', include('wofw.urls')),
+    url(r'^bills/', include('wofw.urls'))
 
 )

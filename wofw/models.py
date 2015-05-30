@@ -4,7 +4,7 @@ from django.db import models
 class ward(models.Model):
     wardnumber = models.IntegerField(default=0)
     
-    def __str__(self):
+    def __unicode__(self):
         return self.wardnumber
     
 class alderman(models.Model):
@@ -12,14 +12,14 @@ class alderman(models.Model):
     alderlast = models.CharField(max_length=100)
     alderfull = models.CharField(max_length=200)
     
-    def __str__(self):
+    def __unicode__(self):
         return self.alderlast
   
 class bill(models.Model):
     billnumber = models.IntegerField(default=0)
     billname = models.CharField(max_length=200)
     
-    def __str__(self):
+    def __unicode__(self):
         return self.billnumber
         
 class vote(models.Model):
@@ -47,6 +47,6 @@ class vote(models.Model):
     reading = models.CharField(max_length=20, choices=READING_CHOICES) 
     date = models.DateField()
     
-    def __str__(self):
+    def __unicode__(self):
         return self.vote
     

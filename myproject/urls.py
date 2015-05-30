@@ -8,5 +8,6 @@ urlpatterns = patterns('',
 
     url(r'^admin/', include(admin.site.urls)),
 
-    url(r'^$', include('wofw.urls'))
+    url(r'^$', include('wofw.urls')),
+    url(r'^bills/^$', include('wofw.urls'))
 )

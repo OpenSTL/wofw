@@ -16,15 +16,15 @@ urlpatterns = [
     url(r'^wards/(?P<ward_id>[0-9]+)$', views.ward_detail, name="ward_detail"),
 
     # ex: /aldermen/
-    url(r'aldermen/^$', views.aldermen, name="aldermen"),
+    url(r'^aldermen/$', views.aldermen, name="aldermen"),
 
     # ex: /aldermen/smith/
-    url(r"aldermen/(?P<alderman_name>[a-z ,.'-]+)$", views.alderman_detail, name="alderman_detail"),
+    url(r"^aldermen/(?P<alderman_name>[a-z ,.'-]+)$", views.alderman_detail, name="alderman_detail"),
 
     # ex: /bills/
-    url(r'bills/^$', views.bills, name="bills"),
+    url(r'^bills/$', views.bills, name="bills"),
 
     # ex: /bills/208/
-    url(r'bills/(?P<bill_id>[0-9]+)$', views.bill_detail, name="bill_detail")
+    url(r'^bills/(?P<bill_id>[0-9]+)$', views.bill_detail, name="bill_detail")
 
 ]

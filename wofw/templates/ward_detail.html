@@ -4,16 +4,18 @@
 <head lang="en">
     <meta charset="UTF-8">
     <title></title>
-    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="{{ STATIC_URL }}styles.css">
     <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.3/leaflet.css" />
     <script src="http://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.3/leaflet.js"></script>
     <script src="stlcitywards2010.geojson" type="text/javascript"></script>
-    <link rel="points" type="application/json" href="./stlcitywards2010.geojson">
+    <link rel="points" type="application/json" href="{{ STATIC_URL }}stlcitywards2010.geojson">
+
     <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 </head>
 <body>
     {% if aldermen_list %}
+
         <ul>
         {% for alderman in aldermen_list %}
             <li><a href="/aldermen/{{ alderman.alderlast }}/">Alderman {{ alderman.alderlast }}</a></li>

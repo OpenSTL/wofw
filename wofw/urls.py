@@ -13,7 +13,7 @@ urlpatterns = [
     url(r'^wards/$', views.wards, name="wards"),
 
     # ex: /wards/14/
-    url(r'^wards/(?P<ward_id>[0-9]+)$', views.ward_detail, name="ward_detail"),
+    url(r'^wards/(?P<wardnumber>[0-9]+)$', views.ward_detail, name="ward_detail"),
 
     # ex: /aldermen/
     url(r'^aldermen/$', views.aldermen, name="aldermen"),
@@ -25,6 +25,6 @@ urlpatterns = [
     url(r'^bills/$', views.bills, name="bills"),
 
     # ex: /bills/208/
-    url(r'^bills/(?P<bill_id>[0-9]+)$', views.bill_detail, name="bill_detail")
+    url(r'^bills/(?P<billnumber>[0-9]+)$', views.bill_detail, name="bill_detail")
 
 ]

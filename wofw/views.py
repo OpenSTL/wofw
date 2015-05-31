@@ -3,7 +3,8 @@ from django.shortcuts import render
 from django.http import HttpResponse
 
 # Create your views here.
-from wofw.models import Ward
+from wofw.models import Ward, Alderman
+
 
 
 def index(request):
@@ -17,8 +18,13 @@ def wards(request):
     return render(request, 'wards.html', context)
 
 
+
 def ward_detail(request, wardnumber):
-    return placeholder_detail_on("ward", wardnumber)
+    aldermen_list = Alderman.objects.filter(ward__wardnumber = wardnumber)
+    context = {'aldermen_list': aldermen_list}
+
+    return render(request, 'ward_detail.html', context)
+
 
 
 def aldermen(request):
@@ -44,4 +50,5 @@ def placeholder_list_of(things):
 
 def placeholder_detail_on(thing_name, thing_value):
     return HttpResponse("You're looking at detail on " + thing_name + " " + thing_value)
+
 

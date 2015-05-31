@@ -20,12 +20,13 @@ urlpatterns = [
     url(r'^aldermen/$', views.aldermen, name="aldermen"),
 
     # ex: /aldermen/smith
-    url(r"^aldermen/(?P<alderman_name>[a-z ,.'-]+)/?$", views.alderman_detail, name="alderman_detail"),
+    url(r"^aldermen/(?P<alderman_name>[a-zA-Z ,.'-]+)/?$", views.alderman_detail, name="alderman_detail"),
 
     # ex: /bills
     url(r'^bills/$', views.bills, name="bills"),
 
     # ex: /bills/208
     url(r'^bills/(?P<billnumber>[0-9]+)/?$', views.bill_detail, name="bill_detail")
+
 
 ]

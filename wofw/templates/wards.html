@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+    {% if wards_list %}
+        <ul>
+        {% for ward in wards_list %}
+            <li><a href="/wards/{{ ward.wardnumber }}/">Ward {{ ward.wardnumber }}</a></li>
+        {% endfor %}
+        </ul>
+    {% else %}
+        <p>couldnt find the list of wards</p>
+    {% endif %}
+</body>
+</html>

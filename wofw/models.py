@@ -1,11 +1,12 @@
 from django.db import models
 
+
 # Create your models here.
 class ward(models.Model):
     wardnumber = models.IntegerField(default=0)
     
     def __unicode__(self):
-        return self.wardnumber
+        return unicode(self.wardnumber)
     
 class alderman(models.Model):
     ward = models.ForeignKey(ward)
@@ -13,14 +14,14 @@ class alderman(models.Model):
     alderfull = models.CharField(max_length=200)
     
     def __unicode__(self):
-        return self.alderlast
+        return unicode(self.alderlast)
   
 class bill(models.Model):
     billnumber = models.IntegerField(default=0)
     billname = models.CharField(max_length=200)
     
     def __unicode__(self):
-        return self.billnumber
+        return unicode(self.billnumber)
         
 class vote(models.Model):
     AYE = 'aye'
@@ -44,9 +45,8 @@ class vote(models.Model):
     alderlast = models.ForeignKey(alderman)
     billnumber = models.ForeignKey(bill)
     vote = models.CharField(max_length=10, choices=VOTE_CHOICES)
-    reading = models.CharField(max_length=20, choices=READING_CHOICES) 
-    date = models.DateField()
+    reading = models.CharField(max_length=20, choices=READING_CHOICES)
     
     def __unicode__(self):
-        return self.vote
+        return unicode(self.vote)
     

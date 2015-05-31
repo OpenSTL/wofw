@@ -34,10 +34,9 @@ def aldermen(request):
 
 def alderman_detail(request, alderman_name):
     vote_list = Vote.objects.filter(alderlast__alderlast = alderman_name)
+    alderman = Alderman.objects.get(alderlast = alderman_name)
 
-
-
-    context = {'vote_list': vote_list}
+    context = {'vote_list': vote_list, 'alderman': alderman}
 
     return render(request, 'alderman_detail.html', context)
 

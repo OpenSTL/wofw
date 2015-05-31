@@ -5,17 +5,43 @@
 <head lang="en">
     <meta charset="UTF-8">
     <title></title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/1.0.2/Chart.min.js"></script>
 </head>
+
+
 <body>
+<div class="container">
+<div class="row">
+<h1>{{ alderman.alderfull }} - Ward {{ alderman.ward }}</h1>
+</div>
+<div class="row">
+<h2>Recent Votes</h2>
+</div>
     {% if vote_list %}
-        <ul>
         {% for vote in vote_list %}
-	    <li><a href="/bills/{{ vote.billnumber }}/">Bill {{ vote.billnumber }} </a></li>
-            <li>{{ vote.vote }} ( {{ vote.reading }} reading )</a></li>
+            <div class="row"> 
+	    <h3><a href="/bills/{{ vote.billnumber }}/">Bill {{ vote.billnumber }} </a> - {{ vote.billnumber.billname }}</h3>
+            </div>
+            <div class="row">
+              <div class="col-md-4">
+              <p> {{ vote.vote }}</p>
+              </div>
+              <div class="col-md-8">
+              <p>description</p>
+              </div>
+            </div>
+            <div class="row">
+            <div class="col-md-12">
+            <p>#tag1  #tag2</p>
+            </div>
+
+            </div>
         {% endfor %}
-        </ul>
     {% else %}
         <p>couldnt find the list of votes</p>
     {% endif %}
+</div>
 </body>
 </html>

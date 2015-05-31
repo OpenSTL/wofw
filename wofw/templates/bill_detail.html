@@ -6,6 +6,7 @@
 <head lang="en">
     <meta charset="UTF-8">
     <title></title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/1.0.2/Chart.min.js"></script>
 </head>
 <body>
 <h1>{{ bill.billnumber }} - {{ bill.billname }}</h1>
@@ -13,6 +14,7 @@
 <h3>NAY VOTES: {{ nay_count }}</h3>
 <h3>PRESENT VOTES: {{ present_count }}</h3>
 <h3>NO VOTE: {{ novote_count }} </h3>
+<canvas id="myChart" width="200" height="200"></canvas> 
 
     {% if vote_list %}
         <table>
@@ -28,5 +30,12 @@
     {% else %}
         <p>couldnt find the list of votes</p>
     {% endif %}
+<script>
+var data = [ { value: {{ aye_count }}, color: "#5AD3D1", label: "Aye" }, { value: {{ nay_count }}, color: "#FF5A5E", label: "Nay" }, { value: {{ present_count }}, color: "#FFC870", label: "Present"}, { value: {{ novote_count }}, color: "#AAAAAA", label: "Did Not Vote"} ];
+var ctx = document.getElementById("myChart").getContext("2d");
+
+var mychart = new Chart(ctx).Pie(data); 
+</script>
 </body>
 </html>
+

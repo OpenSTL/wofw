@@ -2,7 +2,15 @@
 <html>
 <head lang="en">
     <meta charset="UTF-8">
-    <title></title>
+    <title>St. Louis Board of Alderman</title>
+    <link rel="stylesheet" href="{{ STATIC_URL }}styles.css">
+    <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.3/leaflet.css" />
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.3/leaflet.js"></script>
+    <script src="stlcitywards2010.geojson" type="text/javascript"></script>
+    <link rel="points" type="application/json" href="{{ STATIC_URL }}stlcitywards2010.geojson">
+
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 </head>
 <body>
     {% if wards_list %}
@@ -14,5 +22,73 @@
     {% else %}
         <p>couldnt find the list of wards</p>
     {% endif %}
+    <div id="map"></div>
+    <script>
+
+    if (L.Browser.ie6) {
+        alert('Upgrade your browser!');
+    }
+
+    var mapTiles = L.tileLayer('https://api.tiles.mapbox.com/v4/pjleonard37.mal9bi3m/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoicGpsZW9uYXJkMzciLCJhIjoic2YyV2luUSJ9.lPoix24JhyR8sljAwjHg9A', {
+        attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
+        maxZoom: 18,
+          id: 'pjleonard37.mal9bi3m',
+          accessToken: 'pk.eyJ1IjoicGpsZW9uYXJkMzciLCJhIjoic2YyV2luUSJ9.lPoix24JhyR8sljAwjHg9A'
+    });
+
+  $.getJSON($('link[rel="points"]').attr("href"), function(data) {
+    var geojson = L.geoJson(data, {
+          style: function(feature) {
+          switch (feature.properties.HANDLE) {
+              case '01': 
+              case '02':
+              case '03': 
+              case '04':
+              case '05': 
+              case '06':
+                return {fillcolor: "#e4b9b7"};
+              case '07': 
+              case '08':
+              case '09': 
+              case '10':
+              case '11': 
+              case '12':
+                return {color: "#c52965"}; 
+              case '13': 
+              case '14':
+              case '15':
+              case '16':
+              case '17': 
+              case '18':
+                return {color: "#f5a346"};
+              case '19':
+              case '20': 
+              case '21': 
+              case '22':
+              case '23': 
+                return {color: "#2e4564"};
+              case '24':
+              case '25': 
+              case '26':
+              case '27': 
+              case '28':
+                return {color: "#0addb7"};
+          }
+      },
+      onEachFeature: function (feature, layer) {
+        var popupcontent = feature.properties.WARD;
+        layer.on('click', function(e) {
+          window.location='/wards/' + popupcontent + '/';
+        });
+      }
+    });
+    var map = L.map('map').fitBounds(geojson.getBounds());
+    mapTiles.addTo(map);
+    geojson.addTo(map);
+  });
+
+  L.control.scale().addTo(map);
+
+</script>
 </body>
 </html>

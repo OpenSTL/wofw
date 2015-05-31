@@ -2,9 +2,9 @@ from django.contrib import admin
 
 # Register your models here.
 
-from .models import ward, alderman, bill, vote
+from .models import Ward, Alderman, Bill, Vote
 
-admin.site.register(ward)
-admin.site.register(alderman)
-admin.site.register(bill)
-admin.site.register(vote)
+admin.site.register(Ward)
+admin.site.register(Alderman)
+admin.site.register(Bill)
+admin.site.register(Vote)

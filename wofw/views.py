@@ -51,7 +51,13 @@ def bill_detail(request, billnumber):
     vote_list = Vote.objects.filter(billnumber__billnumber = billnumber)
     bill = Bill.objects.get(billnumber = billnumber)
 
-    context = {'bill': bill, 'vote_list': vote_list}
+    aye_count = Vote.objects.filter(billnumber__billnumber = billnumber, vote = 'aye').count()
+    nay_count = Vote.objects.filter(billnumber__billnumber = billnumber, vote = 'nay').count()
+    present_count = Vote.objects.filter(billnumber__billnumber = billnumber, vote = 'present').count()
+    novote_count = Vote.objects.filter(billnumber__billnumber = billnumber, vote = 'no vote').count()
+
+    context = {'bill': bill, 'vote_list': vote_list, 'aye_count': aye_count, 'nay_count': nay_count, 'present_count': present_count, 'novote_count': novote_count}
+
 
 
     return render(request, 'bill_detail.html', context)

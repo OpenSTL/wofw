@@ -9,12 +9,17 @@
 </head>
 <body>
 <h1>{{ bill.billnumber }} - {{ bill.billname }}</h1>
+<h3>AYE VOTES: {{ aye_count }}</h3>
+<h3>NAY VOTES: {{ nay_count }}</h3>
+<h3>PRESENT VOTES: {{ present_count }}</h3>
+<h3>NO VOTE: {{ novote_count }} </h3>
 
     {% if vote_list %}
         <table>
         {% for vote in vote_list %}
             <tr>
             <td><a href="/aldermen/{{ vote.alderlast }}"> {{ vote.alderlast }} </a></td>
+
             <td> {{ vote.vote }} </td>
 	    </tr>
 

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+    {% if bills_list %}
+        <ul>
+        {% for bill in bills_list %}
+            <li><a href="/bills/{{ bill.billnumber }}/">Bill {{ bill.billnumber }}</a></li>
+        {% endfor %}
+        </ul>
+    {% else %}
+        <p>couldnt find the list of bills</p>
+    {% endif %}
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+
+
+<html>
+
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<h1>{{ bill.billnumber }} - {{ bill.billname }}</h1>
+
+    {% if vote_list %}
+        <table>
+        {% for vote in vote_list %}
+            <tr>
+            <td><a href="/aldermen/{{ vote.alderlast }}"> {{ vote.alderlast }} </a></td>
+            <td> {{ vote.vote }} </td>
+	    </tr>
+
+        {% endfor %}
+        </table>
+    {% else %}
+        <p>couldnt find the list of votes</p>
+    {% endif %}
+</body>
+</html>

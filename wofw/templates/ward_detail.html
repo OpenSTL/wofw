@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+    {% if aldermen_list %}
+        <ul>
+        {% for alderman in aldermen_list %}
+            <li><a href="/aldermen/{{ alderman.alderlast }}/">Alderman {{ alderman.alderlast }}</a></li>
+        {% endfor %}
+        </ul>
+    {% else %}
+        <p>couldnt find the list of aldermen</p>
+    {% endif %}
+</body>
+</html>

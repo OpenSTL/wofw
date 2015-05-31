@@ -13,16 +13,20 @@
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 </head>
 <body>
-    {% if wards_list %}
-        <ul>
-        {% for ward in wards_list %}
-            <li><a href="/wards/{{ ward.wardnumber }}/">Ward {{ ward.wardnumber }}</a></li>
-        {% endfor %}
-        </ul>
-    {% else %}
-        <p>couldnt find the list of wards</p>
-    {% endif %}
-    <div id="map"></div>
+    <h1>Which ward?</h1>
+
+    <div id="map" style="width:75%; display: inline-block;"></div>
+    <div id="wardlist" style="width:25%; display: inline-block;">
+        {% if wards_list %}
+            <ul>
+            {% for ward in wards_list %}
+                <li><a href="/wards/{{ ward.wardnumber }}/">Ward {{ ward.wardnumber }}</a></li>
+            {% endfor %}
+            </ul>
+        {% else %}
+            <p>couldnt find the list of wards</p>
+        {% endif %}
+    </div>
         <script>
 
         if (L.Browser.ie6) {

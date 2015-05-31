@@ -1,9 +1,10 @@
 from django.shortcuts import render
 
+
 from django.http import HttpResponse
 
 # Create your views here.
-from wofw.models import Ward, Alderman
+from wofw.models import Ward, Alderman, Vote, Bill
 
 
 
@@ -32,16 +33,29 @@ def aldermen(request):
 
 
 def alderman_detail(request, alderman_name):
-    return placeholder_detail_on("alderman", alderman_name)
+    vote_list = Vote.objects.filter(alderlast__alderlast = alderman_name)
 
 
+
+    context = {'vote_list': vote_list}
+
+    return render(request, 'alderman_detail.html', context)
 
 def bills(request):
-    return placeholder_list_of("bills")
+    bills_list = Bill.objects.order_by('billnumber')
+    context = {'bills_list': bills_list}
+    return render(request, 'bills.html', context)
 
 
 def bill_detail(request, billnumber):
-    return placeholder_detail_on("bill", billnumber)
+    vote_list = Vote.objects.filter(billnumber__billnumber = billnumber)
+    bill = Bill.objects.get(billnumber = billnumber)
+
+    context = {'bill': bill, 'vote_list': vote_list}
+
+
+    return render(request, 'bill_detail.html', context)
+
 
 # helpers
 def placeholder_list_of(things):

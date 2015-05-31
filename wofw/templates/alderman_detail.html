@@ -6,7 +6,10 @@
     <meta charset="UTF-8">
     <title></title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="{{ STATIC_URL }}lavish-bootstrap.css">    
+
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/1.0.2/Chart.min.js"></script>
 </head>
 
@@ -16,14 +19,16 @@
 <div class="row">
 <h1>{{ alderman.alderfull }} - Ward {{ alderman.ward }}</h1>
 </div>
-<div class="row">
-<h2>Recent Votes</h2>
-</div>
+<div class="panel panel-default">
+	<div class="panel-heading"><h3>Recent Votes</h3></div>
+<div class="panel-body">
     {% if vote_list %}
         {% for vote in vote_list %}
             <div class="row"> 
+	    <div class="col-md-12">
 	    <h3><a href="/bills/{{ vote.billnumber }}/">Bill {{ vote.billnumber }} </a> - {{ vote.billnumber.billname }}</h3>
             </div>
+	    </div>
             <div class="row">
               <div class="col-md-4">
               <p> {{ vote.vote }}</p>
@@ -38,10 +43,13 @@
             </div>
 
             </div>
+	<hr />
         {% endfor %}
     {% else %}
         <p>couldnt find the list of votes</p>
     {% endif %}
+</div>
+</div>
 </div>
 </body>
 </html>

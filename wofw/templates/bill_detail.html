@@ -4,9 +4,11 @@
 <html>
 
 <head lang="en">
+
     <meta charset="UTF-8">
     <title></title>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+<link rel="stylesheet" href="{{ STATIC_URL }}lavish-bootstrap.css">
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/1.0.2/Chart.min.js"></script>
 </head>
@@ -17,6 +19,7 @@
 </div>
 <div class="row">
 <div class="col-md-6">
+
 <h3>AYE VOTES: {{ aye_count }}</h3>
 <h3>NAY VOTES: {{ nay_count }}</h3>
 <h3>PRESENT VOTES: {{ present_count }}</h3>
@@ -28,10 +31,17 @@
         <table>
         {% for vote in vote_list %}
             <tr>
-            <td><a href="/aldermen/{{ vote.alderlast }}"> {{ vote.alderlast }} </a></td>
-
-            <td> {{ vote.vote }} </td>
-	    </tr>
+            <td><h4><a href="/aldermen/{{ vote.alderlast }}"> {{ vote.alderlast }} </a></h4></td>
+	    {% if vote.vote == "aye" %}			
+            <td> <h4 style="color:#5AD3D1">{{ vote.vote }}</h4> </td>
+	    {% elif vote.vote == "nay" %}
+	    <td> <h4 style="color:#FF5A5E">{{ vote.vote }} </h4></td>
+	    {% elif vote.vote == "present" %}
+	    <td> <h4 style="color:#FFC870">{{ vote.vote }}</h4></td>
+	    {% elif vote.vote == "no vote" %}
+	    <td><h4 style="color:#AAAAAA">{{ vote.vote }}</h4></td>
+	    {% endif %}
+		</tr>
 
         {% endfor %}
         </table>

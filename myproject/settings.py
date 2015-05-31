@@ -85,4 +85,4 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.7/howto/static-files/
 
 STATIC_URL = 'http://wofw.eleanortutt.webfactional.com/static/'
-STATIC_ROOT = '/home/username/webapps/wofwstatic/'
+STATIC_ROOT = '/home/eleanortutt/webapps/wofwstatic/'

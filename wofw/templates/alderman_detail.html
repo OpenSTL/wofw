@@ -31,15 +31,24 @@
 	    </div>
             <div class="row">
               <div class="col-md-4">
-              <p> {{ vote.vote }}</p>
+              {% if vote.vote == "aye" %}
+	      <h4 style="color:#5AD3D1"> {{ vote.vote }}</h4>
+	      {% elif vote.vote == "nay" %}
+	      <h4 style="color:#FF5A5E"> {{ vote.vote }}</h4>
+	      {% elif vote.vote == "present" %}
+	      <h4 style="color:#FFC870"> {{ vote.vote }}</h4>
+	      {% elif vote.vote == "no vote" %}
+	      <h4 style="color:#AAAAAA"> {{ vote.vote }}</h4>
+	      {% endif %}
               </div>
               <div class="col-md-8">
-              <p>description</p>
+              <h4>placeholder for common language description of board bill</h4>
               </div>
             </div>
             <div class="row">
             <div class="col-md-12">
-            <p>#tag1  #tag2</p>
+            <p>#tags  #to  #aid  #in  #related  #board  #bill  #search</p>
+
             </div>
 
             </div>

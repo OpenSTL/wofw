@@ -5,15 +5,17 @@
     <meta charset="UTF-8">
     <title>St. Louis Board of Alderman</title>
     <link rel="stylesheet" href="{{ STATIC_URL }}styles.css">
+    <link rel="stylesheet" href="{{ STATIC_URL }}lavish-bootstrap.css"/>
 </head>
+
 <body>
     {% if aldermen_list %}
 
-        <ul>
+        
         {% for alderman in aldermen_list %}
-            <li><a href="/aldermen/{{ alderman.alderlast }}/">Alderman {{ alderman.alderlast }}</a></li>
+            <h1><a href="/aldermen/{{ alderman.alderlast }}/">Alderman {{ alderman.alderlast }}</a></h1>
         {% endfor %}
-        </ul>
+        
     {% else %}
         <p>couldnt find the list of aldermen</p>
     {% endif %}

@@ -101,10 +101,8 @@
         var map = L.map('map').fitBounds(geojson.getBounds());
         mapTiles.addTo(map);
         geojson.addTo(map);
+        L.control.scale().addTo(map);
       });
-
-      L.control.scale().addTo(map);
-
     </script>
 </body>
 </html>
